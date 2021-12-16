@@ -1,0 +1,34 @@
+<div *ngIf="(currentUser$ | async) && !(doesNotHaveSubs$ | async)">
+  <h1>Select your monthly plan</h1>
+  <h2>Clean the ocean and reduce microplastics damage</h2>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>helper</mat-card-title>
+      <mat-card-subtitle>5€ / month</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Perfect to start cleaning the ocean</p>
+      <p>💪 30L plastic reduced</p>
+      <p>every month</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <p><a mat-raised-button color="accent" (click)="sendToCheckout()">choose plan</a></p>
+      <mat-spinner *ngIf="isloading" color="accent" style="margin: 1em auto"></mat-spinner>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+  <mat-card *ngIf="doesNotHaveSubs$ | async">
+    <mat-card-header>
+      <mat-card-title>Subscribed</mat-card-title>
+      <mat-card-subtitle>Stay calm, and achieve your goals</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <p><a mat-raised-button color="basic" routerLink="/kanban">💪 edit kanban</a></p>
+      <p><a mat-raised-button color="basic" href="https://www.etsy.com/shop/malamakai?coupon=NAMASTE" target="_blank">✨ shop discounts</a></p>
+      <p><a mat-raised-button color="accent" (click)="sendToCustomerPortal()">edit subscription</a><p>
+      <mat-spinner *ngIf="isloading" color="accent" style="margin: 1em auto"></mat-spinner>
+    </mat-card-actions>
+  </mat-card>
