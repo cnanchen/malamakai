@@ -14,11 +14,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
 
 // Page components
 import { KnowPageComponent } from './know-page/know-page.component';
 import { CalmPageComponent } from './calm-page/calm-page.component';
 import { KoanPageComponent } from './koan-page/koan-page.component';
+import { OceansModule } from './oceans/oceans.module';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,13 @@ import { KoanPageComponent } from './koan-page/koan-page.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireFunctionsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    OceansModule,
   ],
-  providers: [],
+  providers: [
+    { provide: REGION, useValue: 'us-central1' }, //TO-DO Change to your functions location
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

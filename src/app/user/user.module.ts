@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { WaveComponent } from './wave/wave.component';
+import { UpgradeComponent } from './upgrade/upgrade.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { WaveComponent } from './wave/wave.component';
     EmailLoginComponent,
     LoginPageComponent,
     SubscribeComponent,
-    WaveComponent
+    WaveComponent,
+    UpgradeComponent
   ],
   exports: [
     GoogleSigninDirective

@@ -1,0 +1,10 @@
+tasks:
+  - before: |
+      echo "Installing tools…"
+      npm install -g firebase-tool && @angular/cli
+    init: |
+      echo "Installing dependencies…"
+      npm install
+    command: |
+      echo "Serve project"
+      npm start

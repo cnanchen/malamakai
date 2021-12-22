@@ -8,6 +8,7 @@
      
       <!-- <a mat-list-item routerLink="/" (click)="drawer.close()">home</a> -->
       <a mat-list-item routerLink="/kanban" (click)="drawer.close()">🙌 kanban</a>
+      <a mat-list-item routerLink="/ocean" (click)="drawer.close()">🙌 ocean</a>
       <a mat-list-item routerLink="/know" (click)="drawer.close()">👁 know</a>
       <a mat-list-item routerLink="/koan" (click)="drawer.close()">🤯 koan</a>
       <a mat-list-item routerLink="/meditate" (click)="drawer.close()">😌 meditate</a>
@@ -33,6 +34,9 @@
       <span class="fill-space"></span>
       <div *ngIf="!(isHandset$ | async)">
         <a mat-button routerLink="/kanban">🙌 kanban</a>
+        <a mat-button routerLink="/ocean">🙌 ocean</a>
+        <a mat-button routerLink="/oceans">🙌 oceans</a>
+        <a mat-button routerLink="/oceanos">🙌 oceanos</a>
         <a mat-button routerLink="/know">👁 know</a>
         <a mat-button routerLink="/koan">🤯 koan</a>
         <a mat-button routerLink="/meditate">😌 meditate</a>

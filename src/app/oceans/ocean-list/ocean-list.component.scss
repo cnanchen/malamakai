@@ -1,0 +1,21 @@
+.animal {
+    //padding: 50px;
+    //max-width: 50px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    //top: 50%;
+}
+
+.grid {
+margin: 1rem;
+display: grid;
+gap: 1rem;
+grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+.grid-item-anim {
+    transition: transform 500ms ease;
+    &:hover {
+    transform: translateY(-3px);
+    }
+}
+}

@@ -21,6 +21,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { YouTubePlayerModule } from "@angular/youtube-player";
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
@@ -38,7 +40,6 @@ const modules = [
   MatSidenavModule,
   MatListModule,
   MatMenuModule,
-  MatIconModule,
   MatCardModule,
   MatFormFieldModule,
   MatInputModule,
@@ -50,6 +51,8 @@ const modules = [
   HttpClientModule,
   YouTubePlayerModule,
   MatTooltipModule,
+  MatExpansionModule,
+  MatButtonToggleModule,
 ];
 
 @NgModule({
