@@ -35,6 +35,7 @@ export class OceanosListComponent implements OnInit {
   }
 
   // ✅ DISPLAY INVOICES
+  // of active subscriptions combined
   getUserTasks() {
     const userId = this.afAuth.auth.currentUser.uid;
     const ref = this.afStore.collection('customers').ref;
@@ -54,14 +55,17 @@ export class OceanosListComponent implements OnInit {
           invoiceSnap.docs.forEach((doc) => {
             const invoiceId = doc.id;
             const invoiceData = doc.data();
-            // console.log('📄 USER INVOICES:', invoiceData);
+            console.log('📄 USER INVOICES:', invoiceData);
 
             if (invoiceData.status === 'paid') {
               items.push({
                 number: invoiceData.number,
                 url: invoiceData.hosted_invoice_url,
                 created: invoiceData.created * 1000,
-                label: invoiceData.metadata.label,
+                label: invoiceData.description,
+                ocean: invoiceData.metadata.ocean,
+                clean: invoiceData.metadata.clean,
+                // icon: invoiceData.lines.data[0].nickname,
                 invoiceId,
               });
             }

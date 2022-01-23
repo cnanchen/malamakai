@@ -191,6 +191,7 @@ export class UpgradeComponent {
   }
   
   // ✅ GET USER SUBSCRIPTION
+  // only first subscription is shown.
   private checkUserProduct() {
     const userId = this.afAuth.auth.currentUser.uid;
     const ref = this.afStore.collection('customers').ref;

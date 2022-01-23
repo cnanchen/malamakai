@@ -1,19 +1,21 @@
 <!-- <div *ngIf="(currentUser$ | async) && !(doesNotHaveSubs$ | async)"> -->
-    <mat-card *ngFor="let item of products">
-      <mat-card-header>
-        <mat-card-title>{{item.name}}</mat-card-title>
-        <mat-card-subtitle style="white-space: pre-line">{{item.description}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src={{item.image}} alt="Photo of a Shiba Inu">
-      <mat-card-actions>
-        <a mat-raised-button color="accent" (click)="subscribe(item.priceId)">{{ item.price }} {{item.currency | uppercase}}/{{ item.interval }}</a>
-        <mat-spinner *ngIf="isloading" color="accent" class="spinner"></mat-spinner>
-      </mat-card-actions>
-    </mat-card>
+    <div class="grid">
+      <mat-card *ngFor="let item of products">
+        <mat-card-header>
+          <mat-card-title>{{item.name}}</mat-card-title>
+          <mat-card-subtitle style="white-space: pre-line">{{item.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{item.image}}>
+        <mat-card-actions>
+          <a mat-raised-button color="accent" (click)="subscribe(item.priceId)">{{ item.price }} {{item.currency | uppercase}}/{{ item.interval }}</a>
+          <mat-spinner *ngIf="isloading" color="accent" class="spinner"></mat-spinner>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   <!-- </div> -->
   
   <!-- <div *ngIf="doesNotHaveSubs$ | async"> -->
-    <mat-card>
+    <mat-card class="width">
       <mat-card-header>
         <mat-icon mat-card-avatar>{{userId.active === true ? 'check_circle' : 'highlight_off'}}</mat-icon>
         <mat-card-title>{{userId.name}}</mat-card-title>      
@@ -29,6 +31,9 @@
   <!-- </div> -->
 
 <h2>Past invoices</h2>
+<section class="width">
+
+
 <mat-accordion>
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
@@ -51,3 +56,5 @@
     
   </mat-expansion-panel>
 </mat-accordion>
+
+</section>

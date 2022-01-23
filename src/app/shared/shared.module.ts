@@ -26,6 +26,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
+
 const components = [
   ShellComponent, DeleteButtonComponent
 ];
