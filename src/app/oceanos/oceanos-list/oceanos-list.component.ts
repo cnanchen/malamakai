@@ -1,17 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { DialogComponent } from './../dialog/dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-
-export interface PostI {
-  titlePost: string;
-  contentPost: string;
-  imagePost?: any;
-  id?: string;
-  tagsPost: string;
-  fileRef?: string;
-}
 
 @Component({
   selector: 'app-oceanos-list',
@@ -26,7 +15,6 @@ export class OceanosListComponent implements OnInit {
   constructor(
     private afAuth: AngularFireAuth,
     private afStore: AngularFirestore,
-    public dialog: MatDialog,
   ) {
     this.getUserTasks();
   }
@@ -73,20 +61,6 @@ export class OceanosListComponent implements OnInit {
         });
         this.tasks = items;  
       });
-  }
-
-  openDialog(post?: PostI): void {
-    const config = {
-      data: {
-        comment: post ? 'Edit post' : 'New post',
-        content: post
-      }
-    };
-
-    const dialogRef = this.dialog.open(DialogComponent, config);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result ${result}`);
-    });
   }
 
 }

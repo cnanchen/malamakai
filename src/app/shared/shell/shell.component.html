@@ -3,17 +3,18 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>Welcome 👋</mat-toolbar>
     <mat-nav-list>
      
       <!-- <a mat-list-item routerLink="/" (click)="drawer.close()">home</a> -->
-      <a mat-list-item routerLink="/kanban" (click)="drawer.close()">🙌 kanban</a>
-      <a mat-list-item routerLink="/ocean" (click)="drawer.close()">🙌 ocean</a>
-      <a mat-list-item routerLink="/know" (click)="drawer.close()">👁 know</a>
-      <a mat-list-item routerLink="/koan" (click)="drawer.close()">🤯 koan</a>
-      <a mat-list-item routerLink="/meditate" (click)="drawer.close()">😌 meditate</a>
-      <a mat-list-item href="https://malamakai.etsy.com/" target="_blank">✨ shop</a>
-      <a mat-list-item routerLink="/profile" (click)="drawer.close()">🔑 profile</a>
+      <a mat-list-item routerLink="/kanban" (click)="drawer.close()">home</a>
+      <a mat-list-item routerLink="/ocean" (click)="drawer.close()">about</a>
+      <a mat-list-item routerLink="/know" (click)="drawer.close()">blog</a>
+      <a mat-list-item routerLink="/meditate" (click)="drawer.close()">youtube</a>
+      <a mat-list-item routerLink="/koan" (click)="drawer.close()">gifts</a>
+      <mat-divider></mat-divider>
+      <!-- <a mat-list-item href="https://malamakai.etsy.com/" target="_blank">✨ shop</a> -->
+      <a mat-list-item routerLink="/profile" (click)="drawer.close()">💦 profile</a>
 
     </mat-nav-list>
   </mat-sidenav>
@@ -26,18 +27,17 @@
         (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
 
-
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class="logo" routerLink="/">🌊 malamakai</span>
 
       <span class="fill-space"></span>
       <div *ngIf="!(isHandset$ | async)">
-        <a mat-button routerLink="/kanban">🙌 kanban</a>
-        <a mat-button routerLink="/ocean">🙌 ocean</a>
-        <a mat-button routerLink="/oceans">🙌 oceans</a>
-        <a mat-button routerLink="/oceanos">🙌 oceanos</a>
-        <a mat-button routerLink="/know">👁 know</a>
+        <a mat-button routerLink="/kanban">home</a>
+        <a mat-button routerLink="/ocean">about</a>
+        <a mat-button routerLink="/oceans">blog</a>
+        <a mat-button routerLink="/oceanos">youtube</a>
+        <a mat-button routerLink="/know">gifts</a>
         <a mat-button routerLink="/koan">🤯 koan</a>
         <a mat-button routerLink="/meditate">😌 meditate</a>
         <a mat-button href="https://malamakai.etsy.com/" target="_blank">✨ shop</a>
