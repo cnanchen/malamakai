@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 
 // Page components
 import { KnowPageComponent } from './know-page/know-page.component';
@@ -39,12 +40,14 @@ import { OceansModule } from './oceans/oceans.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     AngularFireFunctionsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     OceansModule,
   ],
   providers: [
     { provide: REGION, useValue: 'us-central1' }, //TO-DO Change to your functions location
+    // { provide: StorageBucket, useValue: 'gs://malamakai.appspot.com' }
   ],
   bootstrap: [AppComponent]
 })

@@ -14,15 +14,27 @@
 
   <div *ngIf="afAuth.authState | async as user" class="logout">
     <img class="avatar" [src]="user.photoURL || 'assets/UserDoodle.svg'">
-    <p>
-      Logged in as <strong>{{ user.email }}</strong>
-    </p>
+    
+    <p><strong>{{ user.displayName }}</strong></p>
+    <p>Logged in as <strong>{{ user.email }}</strong></p>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>shareable link</mat-label>
+      <input matInput value="https://malamakai.web.app/{{user.uid}}">
+      <button matSuffix mat-button mat-icon-button (click)="alertCopy()" cdkCopyToClipboard="https://malamakai.web.app/{{user.uid}}"><mat-icon>reply</mat-icon></button>
+    </mat-form-field>
 
-    <button mat-stroked-button (click)="afAuth.auth.signOut()">Logout</button>
-
-    <h1>UPGRADE</h1>
-    <app-upgrade></app-upgrade> 
-
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Upgrade">
+        <app-upgrade></app-upgrade> 
+      </mat-tab>
+      <mat-tab label="Profile">
+        <app-edit-profile></app-edit-profile>
+      </mat-tab>
+      <mat-tab label="Bio">
+        <app-bio></app-bio>   
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>
   

@@ -1,0 +1,36 @@
+<mat-card class="form center">
+    
+  <!-- 
+  <mat-form-field>
+    <img [src]="user.photoURL" width="256" height="256" class="img-circle">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" class="form-control" placeholder="First name" [(ngModel)]="user.displayName">
+  </mat-form-field>
+  -->
+  <!-- 
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="email" readonly class="form-control" [(ngModel)]="user.email">
+  </mat-form-field>
+  -->
+  <mat-form-field appearance="fill">
+    <mat-label>Bio</mat-label>
+    <textarea matInput class="form-control" rows=6 placeholder="Tell us something about yourself..." [(ngModel)]="user.bio"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Link</mat-label>
+    <input matInput class="form-control" placeholder="share a url..." [(ngModel)]="user.interests">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Your Hobbies<small><i>(Comma Separate Each Hobby)</i></small></mat-label>
+    <textarea matInput class="form-control" rows=6 placeholder="Reading, Travelling, Gaming" [(ngModel)]="user.hobbies"></textarea>
+  </mat-form-field>
+
+  <br>
+  <button mat-raised-button (click)="update()">Update</button>
+  
+  <div role="alert" *ngIf="message">{{message}}</div>
+
+</mat-card>

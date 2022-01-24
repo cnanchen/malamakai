@@ -6,10 +6,12 @@ import { GoogleSigninDirective } from './google-signin.directive';
 import { EmailLoginComponent } from './email-login/email-login.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { WaveComponent } from './wave/wave.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { BioComponent } from './bio/bio.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
     LoginPageComponent,
     SubscribeComponent,
     WaveComponent,
-    UpgradeComponent
+    UpgradeComponent,
+    BioComponent,
+    EditProfileComponent
   ],
   exports: [
     GoogleSigninDirective
@@ -28,6 +32,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
     CommonModule,
     SharedModule,
     UserRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
   ]
 })
