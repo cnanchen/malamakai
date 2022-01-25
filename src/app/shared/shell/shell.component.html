@@ -42,14 +42,12 @@
         <a mat-button routerLink="/meditate">😌 meditate</a>
         <a mat-button href="https://malamakai.etsy.com/" target="_blank">✨ shop</a>
         <a mat-button routerLink="/profile" *ngIf="!(afAuth.authState | async)">🔑 Login</a>
-        <a mat-button routerLink="/profile" *ngIf="afAuth.authState | async as user" >
-          <img class="avatar" [src]="user.photoURL || 'assets/UserDoodle.svg'">
-          Profile
+        <a mat-button routerLink="/profile" *ngIf="afAuth.authState | async as user">
+          <img class="avatar" [src]="user.photoURL || 'assets/UserDoodle.svg'">Profile
         </a>
-
       </div>
 
-      <!--
+<!--       
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -65,8 +63,8 @@
           <i>📺</i>
           <span>Watch on the YouTube</span>
         </a>
-      </mat-menu>
-      -->
+      </mat-menu> -->
+      
     </mat-toolbar>
 
     <ng-content></ng-content>

@@ -17,12 +17,15 @@
     
     <p><strong>{{ user.displayName }}</strong></p>
     <p>Logged in as <strong>{{ user.email }}</strong></p>
-  
+
     <mat-form-field appearance="outline">
       <mat-label>shareable link</mat-label>
       <input matInput value="https://malamakai.web.app/{{user.uid}}">
       <button matSuffix mat-button mat-icon-button (click)="alertCopy()" cdkCopyToClipboard="https://malamakai.web.app/{{user.uid}}"><mat-icon>reply</mat-icon></button>
     </mat-form-field>
+
+    <button mat-stroked-button (click)="afAuth.auth.signOut()">Logout</button>
+
 
     <mat-tab-group mat-align-tabs="center">
       <mat-tab label="Upgrade">
