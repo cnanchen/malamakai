@@ -1,0 +1,61 @@
+.group {
+  background-color:  steelblue;
+  height: 300px;
+  padding-top: 100px;
+}
+.middle {
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100px;
+}
+
+.text {
+  position: absolute;
+  z-index: 2;
+  top: 60px;
+  left: 60px;
+}
+
+.island {
+    position: absolute;
+    z-index: 1;
+  width: 200px;
+     height: 200px;
+    background: tan;
+    border-radius: 32% 68% 69% 31% / 30% 33% 67% 70%;
+
+}
+.wave {
+    position: absolute;
+     opacity: .2;
+    width: 210px;
+    height: 210px;
+    background: white;
+  animation: swell 3s ease-out 0;
+  animation-iteration-count: infinite;
+    border-radius: 32% 68% 69% 31% / 30% 33% 67% 70%;
+
+}
+.wave2 {
+    position: absolute;
+  opacity: .1;
+    width: 230px;
+    height: 230px;
+    background: white;
+  animation: swell 3s ease-out 0;
+  animation-iteration-count: infinite;
+    border-radius: 32% 68% 69% 31% / 30% 33% 67% 70%;
+
+}
+
+@keyframes swell {
+  0%,
+  100% {transform: scaleY(1) scaleX(1)}
+  50%,
+  90% {transform: scaleY(1.1)}
+  75% {transform: scaleY(0.95)}
+  80% {transform: scaleX(0.95)}
+}

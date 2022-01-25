@@ -14,7 +14,7 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {
-    path: 'customers',
+    path: 'ocean',
     loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule),
   },
   {
@@ -22,11 +22,12 @@ const routes: Routes = [
     loadChildren: () => import('./kanban/ocean.module').then(m => m.KanbanModule),
     // canActivate: [AuthGuard]
   },
+  /*
   {
     path: 'ocean',
     loadChildren: () => import('./ocean/ocean.module').then(m => m.OceanModule),
     // canActivate: [AuthGuard]
-  },
+  },*/
   {
     path: 'oceans',
     loadChildren: () => import('./oceans/oceans.module').then(m => m.OceansModule),

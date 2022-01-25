@@ -45,7 +45,7 @@ export class BioComponent implements OnInit {
       // first_name: this.user.displayName.split(' ')[0],
       // last_name: this.user.displayName.split(' ')[1],
       hobbies: this.user.hobbies,
-      interests: this.user.interests,
+      link: this.user.link,
       bio: this.user.bio,
     }).then(() => {
 
