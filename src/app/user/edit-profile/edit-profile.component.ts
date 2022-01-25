@@ -110,7 +110,7 @@ export class EditProfileComponent implements OnInit {
     })
     // Save copy on firestore
     let userId = this.afAuth.auth.currentUser.uid
-    this.db.collection('users').doc(userId).update({
+    this.db.collection('customers').doc(userId).update({
       displayName: user.displayName,
       photoURL: user.photoURL,
     })

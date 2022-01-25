@@ -1,0 +1,32 @@
+<main style="background-color: cornflowerblue;">
+
+  <div class="grid">
+      <div *ngFor="let item of invoices; let i = index">
+        <button class="animal" mat-button [matMenuTriggerFor]="menu" matTooltip="{{item.description}}">
+          
+          <div class="water">
+            <div class="water-main">
+              <div class="main-water">
+                <h1 class="shake">{{item.label}}</h1>
+              </div>
+              <div class="particle-water"></div>
+              <div class="particle-water2"></div>
+            </div>
+          </div>
+
+        </button>
+      <mat-menu #menu="matMenu">
+        <mat-list>
+          <img src="assets/beach.jpg">
+          <mat-list-item>
+            <p mat-line>Clean: #{{item.number}}</p>
+            <p mat-line>Quantity: {{item.clean}} of trash removed</p>
+            <p mat-line>When: {{item.created | date}}</p>
+          </mat-list-item>
+          <button mat-menu-item href="https://goo.gl/maps/uKZ2CcBuNYn7KxkA9" target="_blank">Where: 📍 {{item.ocean}}</button>
+        </mat-list>
+      </mat-menu>
+    </div>  
+  </div>
+
+</main>

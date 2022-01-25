@@ -33,7 +33,7 @@ export class DetailPageComponent implements OnInit {
       .pipe(
         tap(cust =>
           this.seo.generateTags({
-            title: cust.name,
+            title: cust.displayName,
             description: cust.bio,
             image: cust.photoURL,
           })

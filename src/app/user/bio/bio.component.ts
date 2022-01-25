@@ -23,7 +23,7 @@ export class BioComponent implements OnInit {
 
     let userId = firebase.auth().currentUser.uid;
 
-    firebase.firestore().collection('users').doc(userId).get().then((documentSnapshot) => {
+    firebase.firestore().collection('customers').doc(userId).get().then((documentSnapshot) => {
 
       this.user = documentSnapshot.data();
       // this.user.displayName = this.user.firstName + " " + this.user.lastName;
@@ -41,7 +41,7 @@ export class BioComponent implements OnInit {
     this.message = "Updating...";
 
     let userId = firebase.auth().currentUser.uid;
-    firebase.firestore().collection('users').doc(userId).update({
+    firebase.firestore().collection('customers').doc(userId).update({
       // first_name: this.user.displayName.split(' ')[0],
       // last_name: this.user.displayName.split(' ')[1],
       hobbies: this.user.hobbies,

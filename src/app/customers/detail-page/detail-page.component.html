@@ -15,7 +15,7 @@
 
 <mat-card *ngIf="customer | async as cust">
   <mat-card-header>
-    <mat-card-title>{{ cust.name }}</mat-card-title>
+    <mat-card-title>{{ cust.displayName }}</mat-card-title>
     <mat-card-subtitle>Customer Details</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image [src]="cust.photoURL" />
@@ -23,3 +23,5 @@
     <p>{{ cust.bio }}</p>
   </mat-card-content>
 </mat-card>
+
+<app-ocean></app-ocean>
