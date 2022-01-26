@@ -1,4 +1,8 @@
 <div class="beach">
+    <div class="home">
+        <div class="mat-display-2">Help restore the sea through a monthly subscription</div>
+        <div class="mat-display-1">For less than the cost of a cup of coffee per month you can become climate positive</div>
+        <button mat-stroked-button class="text" routerLink="/profile">🌴 join</button>
 
     <h1>{{title}}</h1>
 
@@ -6,8 +10,8 @@
         <h3 mat-subheader>{{description}}</h3>
 
         <mat-list-item *ngFor="let cust of data.customers" [routerLink]="cust.id" role="listitem">
-            <mat-icon [ngStyle]="{'background-color': getRandomColor2()}" mat-list-icon>account_box</mat-icon>
-            <h3>{{ cust.displayName }}</h3>
+            <!-- <mat-icon [ngStyle]="{'background-color': getRandomColor()}" mat-list-icon>account_box</mat-icon> -->
+            <h3>⛱ {{ cust.displayName }}</h3>
         </mat-list-item>
     </mat-nav-list>
 

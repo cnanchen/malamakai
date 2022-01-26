@@ -19,17 +19,11 @@ import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 
 // Page components
 import { KnowPageComponent } from './know-page/know-page.component';
-import { CalmPageComponent } from './calm-page/calm-page.component';
-import { KoanPageComponent } from './koan-page/koan-page.component';
-import { OceansModule } from './oceans/oceans.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     KnowPageComponent,
-    CalmPageComponent,
-    KoanPageComponent,
-    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -43,7 +37,6 @@ import { OceansModule } from './oceans/oceans.module';
     AngularFireStorageModule,
     AngularFireFunctionsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    OceansModule,
   ],
   providers: [
     { provide: REGION, useValue: 'us-central1' }, //TO-DO Change to your functions location

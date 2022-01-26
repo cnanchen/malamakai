@@ -45,7 +45,7 @@ export class OceanComponent implements OnInit {
           invoiceSnap.docs.forEach((doc) => {
             const invoiceId = doc.id;
             const invoiceData = doc.data();
-            console.log('📄 USER INVOICES:', invoiceData);
+            // console.log('📄 USER INVOICES:', invoiceData);
 
             if (invoiceData.status === 'paid') {
               items.push({
