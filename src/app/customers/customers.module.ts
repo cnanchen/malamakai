@@ -7,6 +7,7 @@ import { DetailPageComponent } from './detail-page/detail-page.component';
 import { OceanComponent } from '../customers/ocean/ocean.component';
 import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FooterComponent } from './footer/footer.component';
     ListPageComponent,
     DetailPageComponent,
     OceanComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

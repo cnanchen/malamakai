@@ -20,10 +20,10 @@
           <img src="assets/beach.jpg">
           <mat-list-item>
             <p mat-line>Clean: #{{item.number}}</p>
-            <p mat-line>Quantity: {{item.clean}} of trash removed</p>
+            <p mat-line>Quantity: {{item.clean}}L of trash removed</p>
             <p mat-line>When: {{item.created | date}}</p>
           </mat-list-item>
-          <button mat-menu-item href="https://goo.gl/maps/uKZ2CcBuNYn7KxkA9" target="_blank">Where: 📍 {{item.ocean}}</button>
+          <a mat-menu-item href="https://goo.gl/maps/uKZ2CcBuNYn7KxkA9" target="_blank">Where: 📍 Portman (see map)</a>
         </mat-list>
       </mat-menu>
     </div>  

@@ -1,4 +1,4 @@
-<div class="profile wave">
+<div class="profile">
   <div *ngIf="!(afAuth.authState | async)">
     <h1>Login</h1>
 
@@ -20,13 +20,14 @@
 
     <mat-form-field appearance="outline">
       <mat-label>shareable link</mat-label>
-      <input matInput value="https://malamakai.web.app/{{user.uid}}">
-      <button matSuffix mat-button mat-icon-button (click)="alertCopy()" cdkCopyToClipboard="https://malamakai.web.app/{{user.uid}}"><mat-icon>reply</mat-icon></button>
+      <input matInput value="malamakai.web.app/{{user.uid}}">
+      <button matSuffix mat-button mat-icon-button (click)="alertCopy()" cdkCopyToClipboard="malamakai.web.app/{{user.uid}}"><mat-icon>copy</mat-icon></button>
     </mat-form-field>
-
-    <button mat-stroked-button (click)="afAuth.auth.signOut()">Logout</button>
-
-
+    <div>
+      <button mat-stroked-button routerLink="/{{user.uid}}"><mat-icon>reply</mat-icon>View profile</button>
+      <button mat-stroked-button (click)="afAuth.auth.signOut()">Logout</button>
+    </div>
+    
     <mat-tab-group mat-align-tabs="center">
       <mat-tab label="Upgrade">
         <app-upgrade></app-upgrade> 
@@ -38,10 +39,6 @@
         <app-bio></app-bio>   
       </mat-tab>
     </mat-tab-group>
+  
   </div>
 </div>
-  
-     
-<!--<app-wave></app-wave>-->
-
-

@@ -1,19 +1,6 @@
-mat-card {
-  max-width: 400px;
-}
-
-.img-circle{
-    border-radius:128px;
-}
-
 .form {
   display: flex;
   flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
 }
-
-/*
-mat-form-field {
-  padding: 10px;
-  width: 100%;
-}
-*/

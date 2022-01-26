@@ -8,7 +8,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubscribeComponent } from './subscribe/subscribe.component';
-import { WaveComponent } from './wave/wave.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { BioComponent } from './bio/bio.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -20,7 +19,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     EmailLoginComponent,
     LoginPageComponent,
     SubscribeComponent,
-    WaveComponent,
     UpgradeComponent,
     BioComponent,
     EditProfileComponent

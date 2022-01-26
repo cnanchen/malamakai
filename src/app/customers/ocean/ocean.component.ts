@@ -41,7 +41,7 @@ export class OceanComponent implements OnInit {
             .where('status', '==', 'paid')
             //.orderBy('unit_amount')
             .get();
-
+          
           invoiceSnap.docs.forEach((doc) => {
             const invoiceId = doc.id;
             const invoiceData = doc.data();
@@ -52,10 +52,8 @@ export class OceanComponent implements OnInit {
                 number: invoiceData.number,
                 url: invoiceData.hosted_invoice_url,
                 created: invoiceData.created * 1000,
-                label: invoiceData.metadata.label, //invoiceData.description
-                ocean: invoiceData.metadata.ocean,
-                clean: invoiceData.metadata.clean,
-                // icon: invoiceData.lines.data[0].nickname,
+                label: invoiceData.lines.data[0].price.nickname,
+                clean: (invoiceData.amount_paid / 100 ) * (6), // x6 litres every 1$ spend.
                 invoiceId,
               });
             }

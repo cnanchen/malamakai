@@ -10,11 +10,11 @@ import { AuthGuard } from './user/auth.guard';
 const routes: Routes = [
 
   {
-    path: '',
+    path: 'profile',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {
-    path: 'ocean',
+    path: '',
     loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule),
   },
   {
@@ -41,7 +41,6 @@ const routes: Routes = [
   { path: 'know', component: KnowPageComponent },
   { path: 'meditate', component: CalmPageComponent },
   { path: 'koan', component: KoanPageComponent },
-  { path: 'profile', component: LoginPageComponent },
 
   { path: 'oceanos', loadChildren: () => import('./oceanos/oceanos.module').then(m => m.OceanosModule) },
 ];
