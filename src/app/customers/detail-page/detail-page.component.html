@@ -1,25 +1,13 @@
 <section class="wave">
 
-  <mat-card *ngIf="customer | async as cust">
-    <img mat-card-image [src]="cust.photoURL" />
-    <mat-card-header>
-      <mat-card-title>{{ cust.displayName }}</mat-card-title>
-      <mat-card-subtitle><a href={{cust.link}} target="_blank">{{ cust.link }}</a></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{ cust.link }}</p>
-      <p>{{ cust.hobbies }}</p>
-
-      <p>{{ cust.bio }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <section *ngIf="customer | async as cust">
-    <img mat-card-image [src]="cust.photoURL" />
-    <h1>{{ cust.displayName }}</h1>
-
-  </section>
-
+  <div class="profile" *ngIf="customer | async as cust">
+    <img class="avatar" [src]="cust.photoURL" />
+    <div class="mat-display-1">{{ cust.displayName }}</div>
+    <!-- <div class="mat-h1">{{ cust.location }}</div> -->
+    <div class="mat-h2">{{ cust.bio }}</div>
+    <a class="mat-h2" href={{cust.link}} target="_blank">{{ cust.link }}</a>
+  </div>
+ 
 </section>
 
 <app-ocean></app-ocean>
