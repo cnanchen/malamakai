@@ -15,8 +15,8 @@
   <div *ngIf="afAuth.authState | async as user" class="logout">
     <img class="avatar" [src]="user.photoURL || 'assets/UserDoodle.svg'">
     
-    <p><strong>{{ user.displayName }}</strong></p>
-    <p>Logged in as <strong>{{ user.email }}</strong></p>
+    <div class="mat-h1">{{ user.displayName }}</div>
+    <div class="mat-h3">Logged in as <strong>{{ user.email }}</strong></div>
 
     <mat-form-field appearance="outline">
       <mat-label>shareable link</mat-label>

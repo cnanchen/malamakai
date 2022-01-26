@@ -30,6 +30,7 @@ export class UpgradeComponent {
     this.displayProducts();
     this.displayInvoices();
     this.setCurrentUser();
+    this.getCustomClaimRole();
   }
   
   // ✅ DISPLAY PRODUCTS
@@ -236,12 +237,23 @@ export class UpgradeComponent {
   }
 
   // 🟠 TO-DO STRIPE ROLES
-  /*
+  // IMPORTANT: at Stripe dashboard/product add metadata field: 'firebaseRole' and example value: 'premium'
   async getCustomClaimRole() {
-    await firebase.auth().currentUser.getIdToken(true);
-    const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
+    await this.afAuth.auth.currentUser.getIdToken(true); // await firebase.auth().currentUser.getIdToken(true);
+    const decodedToken = await this.afAuth.auth.currentUser.getIdTokenResult(); // const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
+    console.log('👤 USER ROLE:',decodedToken.claims.stripeRole);
     return decodedToken.claims.stripeRole;
   }
-  */
+/*
+  async getCustomClaimRole() {
 
+    this.auth.user.subscribe(async res => {
+      res.getIdToken(true);
+      const decodedToken = await res.getIdTokenResult();
+      console.log(decodedToken.claims.stripeRole);
+      this.role = decodedToken.claims.stripeRole;
+      return decodedToken.claims.stripeRole;
+    });
+  }
+  */
 }
