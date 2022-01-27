@@ -10,7 +10,8 @@ import { SubscribedService } from './../../services/subscribed.service';
   styleUrls: ['./upgrade.component.scss']
 })
 export class UpgradeComponent {
-
+  
+  stripeRole: string;
   isloading: boolean;
   products = [];
   invoices = [];
@@ -178,6 +179,7 @@ export class UpgradeComponent {
       currency: '',
       interval: '',
       price: 0,
+      // stripeRole: await getStripeRole(),
     }
     /*
     this.userId((firebaseUser) => {
@@ -236,13 +238,14 @@ export class UpgradeComponent {
       });
   }
 
-  // 🟠 TO-DO STRIPE ROLES
+  // ✅ STRIPE ROLES
   // IMPORTANT: at Stripe dashboard/product add metadata field: 'firebaseRole' and example value: 'premium'
   async getCustomClaimRole() {
     await this.afAuth.auth.currentUser.getIdToken(true); // await firebase.auth().currentUser.getIdToken(true);
     const decodedToken = await this.afAuth.auth.currentUser.getIdTokenResult(); // const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
-    console.log('👤 USER ROLE:',decodedToken.claims.stripeRole);
-    return decodedToken.claims.stripeRole;
+    console.log('👤 USER ROLE:', decodedToken.claims.stripeRole);
+    this.stripeRole = decodedToken.claims.stripeRole;
+    return decodedToken.claims.stripeRole || 'free';
   }
 /*
   async getCustomClaimRole() {

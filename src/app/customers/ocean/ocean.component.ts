@@ -52,7 +52,7 @@ export class OceanComponent implements OnInit {
                 number: invoiceData.number,
                 url: invoiceData.hosted_invoice_url,
                 created: invoiceData.created * 1000,
-                label: invoiceData.lines.data[0].price.nickname,
+                label: invoiceData.lines.data[0].price.nickname, // price name inside product at Stripe dashboard
                 clean: (invoiceData.amount_paid / 100 ) * (6), // x6 litres every 1$ spend.
                 invoiceId,
               });

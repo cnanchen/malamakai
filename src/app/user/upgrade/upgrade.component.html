@@ -24,7 +24,18 @@
     </mat-card-header>
     <mat-card-actions>
       <p>You are paying: {{ userId.price }} {{userId.currency | uppercase}}/{{ userId.interval }}</p>
-      <!-- <p>Giving you the role: {{getCustomClaimRole()}}</p> -->
+      <p>Giving you the role: {{stripeRole}}</p>
+ 
+      <!-- <div *ngIf="role == 'helper' else notPremium">
+        </div> -->
+
+        <ng-container *ngIf="!stripeRole || stripeRole === 'helper'">
+          <p>ROLE WORKS: {{stripeRole}}</p>
+        </ng-container>
+       <ng-template #notPremium>
+        <p>Subscribe to Premium to View the Nutriton Widget</p>
+        </ng-template>
+      
         <!-- <mat-icon [ngStyle]="{'background-color': getRandomColor()}" mat-list-icon>account_box</mat-icon> -->
       <p>Next payment will be on: {{userId.nextPayment | date}}</p>
       <a mat-raised-button color="accent" (click)="accessCustomerPortal()">edit subscription</a>
