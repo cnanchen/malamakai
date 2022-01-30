@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+// import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ export class OceanComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private afAuth: AngularFireAuth,
+    // private afAuth: AngularFireAuth,
     private afStore: AngularFirestore,
   ) {
     this.getUserInvoices();

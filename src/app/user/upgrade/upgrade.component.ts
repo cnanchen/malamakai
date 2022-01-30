@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireFunctions } from '@angular/fire/functions';
-import { SubscribedService } from './../../services/subscribed.service';
 
 @Component({
   selector: 'app-upgrade',
@@ -19,14 +18,10 @@ export class UpgradeComponent {
 
   public userId:any = this.afAuth.auth.currentUser.uid;
   
-  readonly currentUser$ = this.subscribedService.currentUser$
-  readonly doesNotHaveSubs$ = this.subscribedService.doesNotHaveSubs$
-
   constructor(
     private afStore: AngularFirestore,
     private afFunctions: AngularFireFunctions,
     private afAuth: AngularFireAuth,
-    public subscribedService: SubscribedService,
   ) {
     this.displayProducts();
     this.displayInvoices();
@@ -92,7 +87,7 @@ export class UpgradeComponent {
             //.orderBy('unit_amount')
             .get();
 
-          const invoice: any = doc.data();
+          //const invoice: any = doc.data();
 
           invoiceSnap.docs.forEach((doc) => {
             const invoiceId = doc.id;
@@ -110,18 +105,8 @@ export class UpgradeComponent {
           });
         });
         this.invoices = items;
-        /*
-        // Save invoices as tasks
-        this.afStore
-          .collection('oceans')
-          .doc(userId)
-          .collection('checkout_sessions')
-          .add(checkoutSession)
-        */
       });
-      
   }
-  
 
   // ✅ SUBSCRIBE
   public async subscribe(price: string) {

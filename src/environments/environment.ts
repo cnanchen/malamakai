@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   webapp_url: 'http://localhost:4200',
-  // test_user_uid: 'hdC1k2opmsd1cMm6rtpy9ihu1uC3',
 
   stripe: {
     restrictedKey: '',
@@ -18,7 +17,7 @@ export const environment = {
     nextpage: '',
   },
   
-  location: 'us-central1',
+  // location: 'us-central1',
   
   firebase:  {
     apiKey: "AIzaSyDpcqDZQXZD_K3titfTXGHCcJssHUNnE_0",

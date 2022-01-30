@@ -10,7 +10,7 @@ export const environment = {
     playlist: '',
     nextpage: '',
   },
-  location: 'us-central1',
+  // location: 'us-central1',
   firebase:  {
     apiKey: "AIzaSyDpcqDZQXZD_K3titfTXGHCcJssHUNnE_0",
     authDomain: "malamakai.firebaseapp.com",

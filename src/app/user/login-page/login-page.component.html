@@ -28,8 +28,8 @@
       <button mat-stroked-button (click)="afAuth.auth.signOut()">Logout</button>
     </div>
     
-    <mat-tab-group mat-align-tabs="center">
-      <mat-tab label="Upgrade">
+    <mat-tab-group mat-align-tabs="center" color="accent" [selectedIndex]="1">
+      <mat-tab label="✨ Upgrade">
         <app-upgrade></app-upgrade> 
       </mat-tab>
       <mat-tab label="Profile">

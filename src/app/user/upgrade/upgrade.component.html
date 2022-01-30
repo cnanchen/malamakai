@@ -1,4 +1,4 @@
-<!-- <div *ngIf="(currentUser$ | async) && !(doesNotHaveSubs$ | async)"> -->
+<div *ngIf="!stripeRole">
   <div class="grid">
     <mat-card *ngFor="let item of products">
       <mat-card-header>
@@ -12,9 +12,9 @@
       </mat-card-actions>
     </mat-card>
   </div>
-<!-- </div> -->
+</div>
   
-<div class="width" *ngIf="doesNotHaveSubs$ | async">
+<div class="width" *ngIf="stripeRole">
   <h2>Status</h2>
   <mat-card >
     <mat-card-header>
