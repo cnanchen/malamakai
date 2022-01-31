@@ -4,6 +4,8 @@ malamakai is an Angular PWA powered by Firebase.
 
 - [Live Demo](https://malamakai.wep.app/)
 
+![](./src/assets/social-preview.png)
+
 ## Features
 
 - Angular 9.x + Firebase
@@ -21,7 +23,7 @@ malamakai is an Angular PWA powered by Firebase.
 
 2.  Create a project at https://firebase.google.com/ and grab your web config:
 
-![](https://firebasestorage.googleapis.com/v0/b/malamakai-96e46.appspot.com/o/project-config.PNG?alt=media&token=5eabb205-7ba2-4fc3-905f-e9547055e754)
+![](./src/assets/firebase-config.png)
 
 3.  Add the config to your Angular environment
 
