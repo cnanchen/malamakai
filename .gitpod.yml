@@ -11,3 +11,10 @@ tasks:
     command: |
       echo "Serve project"
       npm start
+  - name: DEPLOY
+    command: |
+      echo "Build & deploy"
+      ng build --prod
+      firebase login --no-localhost
+      firebase deploy --only firestore && hosting
+

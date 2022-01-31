@@ -47,3 +47,11 @@ export const environment = {
 ```
 
 5.  Run `ng serve`
+
+## Resources
+
+- [Complete implementation with roles](https://docs.react2025.com/payments/checkout)
+- [Delete users implementation](https://firebase.google.com/codelabs/stripe-firebase-extensions)
+- [Delete users more info](https://firebase.google.com/docs/auth/web/manage-users#delete_a_user)
+- [Custom claims](https://firebase.google.com/docs/auth/admin/custom-claims)
+- [Stripe roles answers](https://stackoverflow.com/questions/64994680/firestore-rules-are-not-accepting-custom-claims-from-stripe-striperole)
