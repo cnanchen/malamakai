@@ -1,7 +1,10 @@
 tasks:
-  - before: |
+  - name: STARTING 
+    before: |
+      echo "Updating npm"
+      npm install -g npm@latest
       echo "Installing tools…"
-      npm install -g firebase-tool && @angular/cli
+      npm install -g firebase-tools && @angular/cli
     init: |
       echo "Installing dependencies…"
       npm install
