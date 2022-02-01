@@ -55,3 +55,13 @@ export const environment = {
 - [Delete users more info](https://firebase.google.com/docs/auth/web/manage-users#delete_a_user)
 - [Custom claims](https://firebase.google.com/docs/auth/admin/custom-claims)
 - [Stripe roles answers](https://stackoverflow.com/questions/64994680/firestore-rules-are-not-accepting-custom-claims-from-stripe-striperole)
+
+- [Project 1](https://github.dev/stripe-samples/firebase-subscription-payments)
+- [Project 2](https://github.dev/DJKullas/MacroRecipes/blob/81ad0ce92f12f6edbc2e2e49fda45318c1de14c6/src/app/profile/profile.component.ts)
+- [Project 3](https://github.dev/Seifobeid2020/FrontendSeminar.V5)
+- [Project 4](https://github.dev/luccagalhato/Dashboard-Angular/blob/3454f008016d0ae6a929cc350a676536e70d0963/src/app/on-boarding/payment/payment.component.ts)
+
+
+## Developing
+
+[]Blog
