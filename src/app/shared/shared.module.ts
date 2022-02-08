@@ -24,6 +24,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard'
+// Angular Material
+
 
 const components = [
   ShellComponent, DeleteButtonComponent
@@ -52,7 +54,7 @@ const modules = [
   MatTooltipModule,
   MatExpansionModule,
   MatButtonToggleModule,
-  ClipboardModule
+  ClipboardModule,
 ];
 
 @NgModule({

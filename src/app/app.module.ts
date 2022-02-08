@@ -19,6 +19,7 @@ import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 
 // Page components
 import { KnowPageComponent } from './know-page/know-page.component';
+import { BlogModule } from './blog/blog.module';
 
 @NgModule({
   declarations: [
@@ -31,12 +32,13 @@ import { KnowPageComponent } from './know-page/know-page.component';
     BrowserAnimationsModule,
     SharedModule,
     UserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireFunctionsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    BlogModule,
   ],
   providers: [
     { provide: REGION, useValue: 'us-central1' }, //TO-DO Change to your functions location

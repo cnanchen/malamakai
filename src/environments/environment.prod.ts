@@ -11,7 +11,7 @@ export const environment = {
     nextpage: '',
   },
   // location: 'us-central1',
-  firebase:  {
+  firebaseConfig:  {
     apiKey: "AIzaSyDpcqDZQXZD_K3titfTXGHCcJssHUNnE_0",
     authDomain: "malamakai.firebaseapp.com",
     projectId: "malamakai",
