@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
-import { environment } from './../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { environment } from './../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-@Component({
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss']
+
+@Injectable({
+  providedIn: 'root'
 })
-export class PageComponent {
-  
+export class BloggerService {
+
   playlistId: string;
   playlistUrl: string;
   safeUrl: any;
@@ -52,7 +52,7 @@ export class PageComponent {
 
 
     return this.http.get( url, { params } ).pipe( map( (res: any) => {
-      console.log('📋 Blog', res);
+      console.log('📋 Blog page', res);
       let videos: any[] = [];
       for ( let video of res.items ) {
         let snippet = video; // let snippet = video.snippet;
@@ -62,5 +62,4 @@ export class PageComponent {
     }) );
 
   }
-  
 }

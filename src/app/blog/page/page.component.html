@@ -2,13 +2,13 @@
 
 <div *ngFor="let video of videos">
   <mat-list>
-    <mat-list-item routerLink="{{video.title}}">{{video.title}}</mat-list-item>
+    <mat-list-item routerLink="{{video.id}}">{{video.title}}</mat-list-item>
   </mat-list>
 </div>
 
 <div *ngFor="let video of videos">
   <mat-card>
-    <mat-card-title>{{video.title}}</mat-card-title>
+    <mat-card-title >{{video.title}}</mat-card-title>
     <mat-card-content>
       <div innerHTML="{{video.content}}"></div>
     </mat-card-content>
