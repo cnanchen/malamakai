@@ -1,16 +1,27 @@
 <div *ngIf="!stripeRole">
+
+  <mat-button-toggle-group class="currency" #currency="matButtonToggleGroup" value="usd">
+    <mat-button-toggle value="usd">USD</mat-button-toggle>
+    <mat-button-toggle value="eur">EUR</mat-button-toggle>
+  </mat-button-toggle-group>
+
   <div class="grid">
-    <mat-card *ngFor="let item of products">
-      <mat-card-header>
-        <mat-card-title>{{item.name}}</mat-card-title>
-        <mat-card-subtitle style="white-space: pre-line">{{item.description}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src={{item.image}}>
-      <mat-card-actions>
-        <a mat-raised-button color="accent" (click)="subscribe(item.priceId)">{{ item.price }} {{item.currency | uppercase}}/{{ item.interval }}</a>
-        <mat-spinner *ngIf="isloading" color="accent" class="spinner"></mat-spinner>
-      </mat-card-actions>
-    </mat-card>
+    
+    <ng-container *ngFor="let item of products">
+
+      <mat-card *ngIf="item.currency == currency.value">
+        <mat-card-header>
+          <mat-card-title>{{item.name}}</mat-card-title>
+          <mat-card-subtitle style="white-space: pre-line">{{item.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src={{item.image}}>
+        <mat-card-actions>
+          <a mat-raised-button color="accent" (click)="subscribe(item.priceId)">{{ item.price }} {{item.currency | uppercase}}/{{ item.interval }}</a>
+          <mat-spinner *ngIf="isloading" color="accent" class="spinner"></mat-spinner>
+        </mat-card-actions>
+      </mat-card>
+
+    </ng-container>
   </div>
 </div>
   
@@ -26,8 +37,8 @@
       <p>You are paying: {{ userId.price }} {{userId.currency | uppercase}}/{{ userId.interval }}</p>
       <p>Giving you the role: {{stripeRole}}</p>
  
-      <!-- <div *ngIf="role == 'helper' else notPremium">
-        </div> -->
+      <!-- <div *ngIf="stripeRole == 'helper' else notPremium">
+        </div> 
 
         <ng-container *ngIf="!stripeRole || stripeRole === 'helper'">
           <p>ROLE WORKS: {{stripeRole}}</p>
@@ -35,8 +46,9 @@
        <ng-template #notPremium>
         <p>Subscribe to Premium to View the Nutriton Widget</p>
         </ng-template>
+
+      -->
       
-        <!-- <mat-icon [ngStyle]="{'background-color': getRandomColor()}" mat-list-icon>account_box</mat-icon> -->
       <p>Next payment will be on: {{userId.nextPayment | date}}</p>
       <a mat-raised-button color="accent" (click)="accessCustomerPortal()">edit subscription</a>
       <mat-spinner *ngIf="isloading" color="accent" class="spinner"></mat-spinner>

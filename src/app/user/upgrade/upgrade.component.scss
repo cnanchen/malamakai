@@ -13,8 +13,12 @@ mat-card {
   margin: 0 auto;
 }
 
+.currency {
+  margin: 20px;
+}
+
 .grid {
-  margin: 1rem;
+  margin: 1rem auto;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
