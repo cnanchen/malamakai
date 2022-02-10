@@ -20,11 +20,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { YouTubePlayerModule } from "@angular/youtube-player";
+
+// Angular Material
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard'
-// Angular Material
 
 
 const components = [

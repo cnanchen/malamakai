@@ -1,66 +1,78 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, OnDestroy } from '@angular/core';
 import { environment } from './../../../environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap} from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { BloggerService } from '../blogger.service';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 
 @Component({
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss']
 })
-export class PageComponent {
+export class PageComponent implements OnInit {
   
-  playlistId: string;
-  playlistUrl: string;
-  safeUrl: any;
-  githubUrl: string;
-  blogId: string = '6664790489593253867'; // TO-DO your blog ID.
+  page: any;
+  pageId: string;
+  
+  public currentBlog$: Observable<any>;   //take currentBlog value as an Observable
 
-  videos: any[] = [];
 
+  private blogId: string = '6664790489593253867'; // TO-DO your blog ID.
   private youtubeUrl:string = 'https://www.googleapis.com/blogger/v3'
   private apikey:string = environment.firebaseConfig.apiKey;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     public sanitizer: DomSanitizer,
     public http:HttpClient,
+    public bloggerService: BloggerService,
   ) {
-    this.playlistId = this.route.snapshot.paramMap.get('id');
-    this.playlistUrl = `https://www.youtube.com/embed/videoseries?list=${this.playlistId}`;
-    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.playlistUrl);
-    this.githubUrl = `https://www.github.com/ethtomars/${this.playlistId}`;
-    this.getPages().subscribe(videos => this.videos = videos);
+    this.pageId = this.route.snapshot.paramMap.get('id');
+    this.bloggerService.getBloggerPage().subscribe(page => this.page = page);
+
   }
 
-  // SAMPLE PAGES: https://www.googleapis.com/blogger/v3/blogs/4967929378133675647/pages?key=YOUR-API-KEY
-  // SPECIFIC PAGE: https://www.googleapis.com/blogger/v3/blogs/4967929378133675647/pages/273541696466681878?key=YOUR-API-KEY
+  ngOnInit() {
+    let myBlogId = this.route.snapshot.paramMap.get('blogId');
+    this.currentBlog$ = this.route.params.pipe(
+      switchMap((params: ParamMap) =>
+      this.getPage(params['blogId'])));}
+    
+    /*
+    const currentBlog = this.route.params.pipe(
+      switchMap(params => {
+        this.getPage(params[id]).subscribe(page => this.page = page);
+        this.bloggerService.getBloggerPage(params[id]).subscribe(page => this.page = page); // this.blogpostService.getSingleBlogInformation(params[id]);
+      })
+    )
+    */
+  }
 
-  // SAMPLE POST: https://www.googleapis.com/blogger/v3/blogs/2399953/posts?key=YOUR-API-KEY
+/*
+ngOnChanges() {
+  this.pageId = this.route.snapshot.paramMap.get('id');
+    this.getPage().subscribe(page => this.page = page);
+}
 
-  getPages() {
-    let url = `${ this.youtubeUrl }/blogs/${ this.blogId}/pages`;
+  ngOnInit() {
+    this.pageId = this.route.snapshot.paramMap.get('id');
+    this.getPage().subscribe(page => this.page = page);
+  }*/
+  
+  getPage() {
+    let url = `${this.youtubeUrl }/blogs/${this.blogId}/pages/${this.pageId}`;
     let params = new HttpParams();
-
-    //params = params.append('part', 'snippet');
-    //params = params.append('maxResults', '100');
-    //params = params.append('playlistId', this.playlistId);
-    //params = params.append('blogs', this.blogId);
-    // params = params.append('pages', '');
     params = params.append('key', this.apikey);
 
-
     return this.http.get( url, { params } ).pipe( map( (res: any) => {
-      console.log('📋 Blog', res);
-      let videos: any[] = [];
-      for ( let video of res.items ) {
-        let snippet = video; // let snippet = video.snippet;
-        videos.push( snippet );
-      }
-      return videos;
+      console.log('📋 Page detail inside:', res);
+      let page = res;
+      return page;
     }) );
-
   }
-  
 }

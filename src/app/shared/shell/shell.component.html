@@ -60,12 +60,9 @@
           <i>📺</i><span>YouTube channel</span>
         </a>
 
-        <p>BLOGS</p>
-        <div *ngFor="let video of videos">
-          <mat-list>
-            <mat-list-item routerLink="{{video.id}}">{{video.title}}</mat-list-item>
-          </mat-list>
-        </div>
+        <ng-container *ngFor="let page of pages">
+          <a mat-menu-item routerLink="blog/page/{{page.id}}">{{page.title}}</a>
+        </ng-container>
 
       </mat-menu>
       

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { environment } from './../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -9,15 +9,19 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BloggerService {
+export class BloggerService implements OnInit {
 
   playlistId: string;
   playlistUrl: string;
   safeUrl: any;
   githubUrl: string;
-  blogId: string = '6664790489593253867'; // TO-DO your blog ID.
 
-  videos: any[] = [];
+  blogId: string = '6664790489593253867'; // TO-DO your blog ID.
+  pageId: string;
+
+  page: any;
+  pages: any[] = [];
+  posts: any[] = [];
 
   private youtubeUrl:string = 'https://www.googleapis.com/blogger/v3'
   private apikey:string = environment.firebaseConfig.apiKey;
@@ -27,39 +31,78 @@ export class BloggerService {
     public sanitizer: DomSanitizer,
     public http:HttpClient,
   ) {
+    this.pageId = this.route.snapshot.paramMap.get('id');
+
     this.playlistId = this.route.snapshot.paramMap.get('id');
     this.playlistUrl = `https://www.youtube.com/embed/videoseries?list=${this.playlistId}`;
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.playlistUrl);
     this.githubUrl = `https://www.github.com/ethtomars/${this.playlistId}`;
-    this.getPages().subscribe(videos => this.videos = videos);
   }
 
-  // SAMPLE PAGES: https://www.googleapis.com/blogger/v3/blogs/4967929378133675647/pages?key=YOUR-API-KEY
-  // SPECIFIC PAGE: https://www.googleapis.com/blogger/v3/blogs/4967929378133675647/pages/273541696466681878?key=YOUR-API-KEY
+  ngOnInit() {
+    // this.getBloggerPages().subscribe(pages => this.pages = pages);
+  }
 
-  // SAMPLE POST: https://www.googleapis.com/blogger/v3/blogs/2399953/posts?key=YOUR-API-KEY
-
-  getPages() {
-    let url = `${ this.youtubeUrl }/blogs/${ this.blogId}/pages`;
+  // 🟢 Specific page from blogger using API.
+  // GET PAGE: https://www.googleapis.com/blogger/v3/blogs/4967929378133675647/pages/273541696466681878?key=YOUR-API-KEY
+  getBloggerPage() {
+    let url = `${this.youtubeUrl }/blogs/${this.blogId}/pages/${this.pageId}`;
     let params = new HttpParams();
-
-    //params = params.append('part', 'snippet');
-    //params = params.append('maxResults', '100');
-    //params = params.append('playlistId', this.playlistId);
-    //params = params.append('blogs', this.blogId);
-    // params = params.append('pages', '');
     params = params.append('key', this.apikey);
 
+    return this.http.get( url, { params } ).pipe( map( (res: any) => {
+      console.log('📋 Page detail:', res);
+      //let page = res;
+      // return page;
+    }) );
+    
+   /*
+    return this.http.get( url, { params } ).pipe( map( (res: any) => {
+      console.log('📋 Page detail:', res);
+      let page: any[] = [];
+      for ( let page of res.items ) {
+        let snippet = page; // let snippet = video.snippet;
+        page.push( snippet );
+      }
+      return page;
+    }) );
+    */
+  }
+
+  // 🟢 List pages from blogger using API.
+  // SAMPLE PAGES: https://www.googleapis.com/blogger/v3/blogs/4967929378133675647/pages?key=YOUR-API-KEY
+  getBloggerPages() {
+    let url = `${ this.youtubeUrl }/blogs/${this.blogId}/pages`;
+    let params = new HttpParams();
+    params = params.append('key', this.apikey);
 
     return this.http.get( url, { params } ).pipe( map( (res: any) => {
-      console.log('📋 Blog page', res);
-      let videos: any[] = [];
-      for ( let video of res.items ) {
-        let snippet = video; // let snippet = video.snippet;
-        videos.push( snippet );
+      console.log('📋 Page list:', res);
+      let pages: any[] = [];
+      for ( let page of res.items ) {
+        let snippet = page; // let snippet = video.snippet;
+        pages.push( snippet );
       }
-      return videos;
+      return pages;
     }) );
-
   }
+
+  // 🟢 Posts from blogger using API.
+  // GET POST: https://www.googleapis.com/blogger/v3/blogs/2399953/posts?key=YOUR-API-KEY
+  getBloggerPosts() {
+    let url = `${ this.youtubeUrl }/blogs/${this.blogId}/posts`;
+    let params = new HttpParams();
+    params = params.append('key', this.apikey);
+
+    return this.http.get( url, { params } ).pipe( map( (res: any) => {
+      console.log('📋 Posts:', res);
+      let posts: any[] = [];
+      for ( let post of res.items ) {
+        let snippet = post; // let snippet = video.snippet;
+        posts.push( snippet );
+      }
+      return posts;
+    }) );
+  }
+
 }

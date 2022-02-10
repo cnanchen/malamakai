@@ -1,18 +1,7 @@
-<p>Blog works!</p>
-
-<div *ngFor="let video of videos">
-  <mat-list>
-    <mat-list-item routerLink="{{video.id}}">{{video.title}}</mat-list-item>
-  </mat-list>
-</div>
-
-<div *ngFor="let video of videos">
-  <mat-card>
-    <mat-card-title >{{video.title}}</mat-card-title>
-    <mat-card-content>
-      <div innerHTML="{{video.content}}"></div>
-    </mat-card-content>
-
-  </mat-card>
-
-</div>
+<p>PAGE</p>
+<mat-card>
+  <mat-card-title>{{page.title}}</mat-card-title>
+  <mat-card-content>
+    <div innerHTML="{{page.content}}"></div>
+  </mat-card-content>
+</mat-card>
