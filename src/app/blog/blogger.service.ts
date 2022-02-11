@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BloggerService implements OnInit {
+export class BloggerService {
 
   playlistId: string;
   playlistUrl: string;
@@ -22,6 +22,10 @@ export class BloggerService implements OnInit {
   page: any;
   pages: any[] = [];
   posts: any[] = [];
+
+  //new
+  customers = null;
+  subscription;
 
   private youtubeUrl:string = 'https://www.googleapis.com/blogger/v3'
   private apikey:string = environment.firebaseConfig.apiKey;
@@ -39,23 +43,21 @@ export class BloggerService implements OnInit {
     this.githubUrl = `https://www.github.com/ethtomars/${this.playlistId}`;
   }
 
-  ngOnInit() {
-    // this.getBloggerPages().subscribe(pages => this.pages = pages);
-  }
-
   // 🟢 Specific page from blogger using API.
   // GET PAGE: https://www.googleapis.com/blogger/v3/blogs/4967929378133675647/pages/273541696466681878?key=YOUR-API-KEY
-  getBloggerPage() {
-    let url = `${this.youtubeUrl }/blogs/${this.blogId}/pages/${this.pageId}`;
+  getBloggerPage(pageId: string) {
+    // let url = `${this.youtubeUrl }/blogs/${this.blogId}/pages/${this.pageId}`;
+    let url = `${this.youtubeUrl }/blogs/${this.blogId}/pages/${pageId}`;
     let params = new HttpParams();
     params = params.append('key', this.apikey);
 
     return this.http.get( url, { params } ).pipe( map( (res: any) => {
       console.log('📋 Page detail:', res);
-      //let page = res;
-      // return page;
+      let page = res;
+      return page;
     }) );
-    
+  }
+
    /*
     return this.http.get( url, { params } ).pipe( map( (res: any) => {
       console.log('📋 Page detail:', res);
@@ -67,7 +69,7 @@ export class BloggerService implements OnInit {
       return page;
     }) );
     */
-  }
+  
 
   // 🟢 List pages from blogger using API.
   // SAMPLE PAGES: https://www.googleapis.com/blogger/v3/blogs/4967929378133675647/pages?key=YOUR-API-KEY
