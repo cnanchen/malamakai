@@ -25,6 +25,7 @@ export class ShellComponent {
     public afAuth: AngularFireAuth,
     public bloggerService: BloggerService,
   ) {
+    //🟢 Dynamic menu: get a list of the blogger pages.
     this.bloggerService.getBloggerPages().subscribe(pages => this.pages = pages);
   }
 

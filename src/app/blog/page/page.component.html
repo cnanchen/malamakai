@@ -1,16 +1,16 @@
 <p>PAGE</p>
 
-<mat-card *ngIf="page | async as page">
-  <mat-card-title>{{page.title}}</mat-card-title>
-  <mat-card-content>
-    <div innerHTML="{{page.content}}"></div>
-  </mat-card-content>
-</mat-card>
-
-<!-- 
-<mat-card>
+<!-- <mat-card *ngIf="page | async as page">
   <mat-card-title>{{page.title}}</mat-card-title>
   <mat-card-content>
     <div innerHTML="{{page.content}}"></div>
   </mat-card-content>
 </mat-card> -->
+
+
+<mat-card>
+  <mat-card-title>{{page.title}}</mat-card-title>
+  <mat-card-content>
+    <div innerHTML="{{page.content}}"></div>
+  </mat-card-content>
+</mat-card>
