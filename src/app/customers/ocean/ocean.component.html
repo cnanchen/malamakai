@@ -1,6 +1,11 @@
 <div class="ocean">
   
+
   <div class="grid">
+    <ng-container *ngIf="invoices.length == 0">
+      <h2 class="text">upgrade to help sea animals grow here...</h2>
+    </ng-container>
+
       <div *ngFor="let item of invoices; let i = index">
         <button class="animal" mat-button [matMenuTriggerFor]="menu" matTooltip="{{item.description}}">
           
@@ -28,5 +33,6 @@
       </mat-menu>
     </div>  
   </div>
+
 
 </div>

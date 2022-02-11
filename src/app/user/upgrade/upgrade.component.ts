@@ -50,7 +50,7 @@ export class UpgradeComponent {
             const priceId = doc.id;
             const priceData = doc.data();
 
-            console.log('🛒 PRODUCTS:', priceData);
+            // console.log('🛒 PRODUCTS:', priceData);
 
             if (priceData.active === true) {
               items.push({
