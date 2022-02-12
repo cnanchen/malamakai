@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: '10.x'
       - name: Install Dependencies
         run: npm install
       - name: Install Angular CLI
