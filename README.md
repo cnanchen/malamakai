@@ -62,6 +62,7 @@ export const environment = {
 - [Project 4](https://github.dev/luccagalhato/Dashboard-Angular/blob/3454f008016d0ae6a929cc350a676536e70d0963/src/app/on-boarding/payment/payment.component.ts)
 
 - [Blogger API](https://developers.google.com/blogger/docs/3.0/)
+- [Blogger implementation](https://github.dev/virgosama/jhotwheels-v2/blob/c5ca94d6d12965c139b09556026fb06496ea0312/src/app/blogger.service.ts)
 
 
 ## Developing
