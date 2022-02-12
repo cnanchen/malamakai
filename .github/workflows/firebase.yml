@@ -16,10 +16,8 @@ jobs:
           node-version: '10.x'
       - name: Install Dependencies
         run: npm install
-      - name: Install Angular CLI
-        run: npm i @angular/cli
       - name: Build
-        run: ng build --prod
+        run: npm run build
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
