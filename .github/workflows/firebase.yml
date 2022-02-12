@@ -38,6 +38,8 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting && firestore:rules
+          args: |
+            firebase use default
+            deploy --only hosting && firestore:rules
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
