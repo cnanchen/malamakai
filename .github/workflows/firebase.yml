@@ -14,7 +14,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Install Angular CLI
-      - run: npm i @angular/cli
+        run: npm i @angular/cli
       - name: Build
         run: ng build --prod
       - name: Archive Production Artifact
