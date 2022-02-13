@@ -6,9 +6,6 @@ tasks:
       echo "✅ BEFORE | PREBUILT & WORKSPACE: Define node version, install angular and firebase"
       nvm install 14.17.0
       nvm alias default 14.17.0
-      npx @angular/cli analytics off
-      npm install -g @angular/cli && firebase-tools
-      
     # before: |  
       # echo "Updating npm"
       # npm install -g npm@latest
@@ -17,6 +14,7 @@ tasks:
     init: |
       echo "✅ INIT | PREBUILT: Installing dependencies…"
       npm install
+      npm install -g @angular/cli && firebase-tools
     command: |
       echo "✅ COMMAND | WORKSPACE: Serve project"
       npm start
@@ -28,4 +26,3 @@ tasks:
       ng build --prod
       firebase login --no-localhost
       firebase deploy --only firestore && hosting
-
