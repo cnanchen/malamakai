@@ -4,8 +4,8 @@ tasks:
   - name: STARTING 
     before: |
       echo "✅ BEFORE | PREBUILT & WORKSPACE: Define node version, install angular and firebase"
-      nvm install 14.17.0
-      nvm alias default 14.17.0
+      nvm install 12.20.2
+      nvm alias default 12.20.2
     # before: |  
       # echo "Updating npm"
       # npm install -g npm@latest
@@ -14,7 +14,9 @@ tasks:
     init: |
       echo "✅ INIT | PREBUILT: Installing dependencies…"
       npm install
-      npm install -g @angular/cli analytics on && firebase-tools
+      npx @angular/cli analytics off
+      npm install -g @angular/cli
+      npm install -g firebase-tools
     command: |
       echo "✅ COMMAND | WORKSPACE: Serve project"
       npm start
