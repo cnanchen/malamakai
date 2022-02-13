@@ -6,7 +6,7 @@ tasks:
       nvm install 14.17.0
       nvm alias default 14.17.0
       npx @angular/cli analytics off
-      npm iinstall -g @angular/cli && firebase-tools
+      npm install -g @angular/cli && firebase-tools
       npm install
     # before: |  
       # echo "Updating npm"
