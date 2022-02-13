@@ -3,24 +3,27 @@ image:
 tasks:
   - name: STARTING 
     before: |
+      echo "✅ BEFORE | PREBUILT & WORKSPACE: Define node version, install angular and firebase"
       nvm install 14.17.0
       nvm alias default 14.17.0
       npx @angular/cli analytics off
       npm install -g @angular/cli && firebase-tools
-      npm install
+      
     # before: |  
       # echo "Updating npm"
       # npm install -g npm@latest
       # echo "Installing tools…"
       # npm install -g firebase-tools && @angular/cli
     init: |
-      echo "Installing dependencies…"
+      echo "✅ INIT | PREBUILT: Installing dependencies…"
       npm install
     command: |
-      echo "Serve project"
+      echo "✅ COMMAND | WORKSPACE: Serve project"
       npm start
+      gp sync-done start
   - name: DEPLOY
     command: |
+      gp sync-await start
       echo "Build & deploy"
       ng build --prod
       firebase login --no-localhost
