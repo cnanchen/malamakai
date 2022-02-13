@@ -14,7 +14,7 @@ tasks:
     init: |
       echo "✅ INIT | PREBUILT: Installing dependencies…"
       npm install
-      npm install -g @angular/cli && firebase-tools
+      npm install -g @angular/cli analytics on && firebase-tools
     command: |
       echo "✅ COMMAND | WORKSPACE: Serve project"
       npm start
