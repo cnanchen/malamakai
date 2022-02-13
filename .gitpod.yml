@@ -12,14 +12,14 @@ tasks:
     init: |
       echo "✅ INIT | PREBUILT: Installing dependencies…"
       npm install
+      gp sync-done start
     command: |
       echo "✅ COMMAND | WORKSPACE: Serve project"
       npm start
-      gp sync-done start
   - name: DEPLOY
+    init: gp sync-await start
     command: |
-      gp sync-await start
-      echo "Build & deploy"
+      echo "✅ COMMAND | WORKSPACE: Build & deploy"
       ng build --prod
       firebase login --no-localhost
       firebase deploy --only firestore && hosting
