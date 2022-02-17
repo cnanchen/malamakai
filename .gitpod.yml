@@ -1,7 +1,5 @@
-#image:
-  #file: .gitpod.Dockerfile
 tasks:
-  - name: STARTING 
+  - name: START 
     before: |
       echo "✅ BEFORE | PREBUILT & WORKSPACE: Define node version, install angular and firebase"
       nvm install 12.20.2
