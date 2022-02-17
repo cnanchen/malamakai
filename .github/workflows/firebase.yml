@@ -38,8 +38,7 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          # args: deploy --project default --only hosting && firestore:rules
-          args: deploy --only hosting:default && firestore:rules
+          args: deploy --project default --only hosting && firestore:rules
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_ID: malamakai 
