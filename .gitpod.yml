@@ -11,5 +11,7 @@ tasks:
       echo "✅ INIT | PREBUILT: Installing dependencies…"
       npm install
     command: |
-      echo "✅ COMMAND | WORKSPACE: Serve project"
+      echo "✅ COMMAND | WORKSPACE: Deploy and Serve project"
+      ng build --configuration production
+      firebase deploy --project default --only hosting && firestore:rules --token $FIREBASE_TOKEN
       npm start
