@@ -19,12 +19,12 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Link</mat-label>
-    <input matInput class="form-control" placeholder="share a url..." [(ngModel)]="user.link">
+    <mat-label>Link<small><i>(share your social media account)</i></small></mat-label>
+    <input matInput class="form-control" placeholder="https://instagram.com/yourname" [(ngModel)]="user.link">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Your Hobbies<small><i>(Comma Separate Each Hobby)</i></small></mat-label>
+    <mat-label>Your Hobbies<small><i>(comma separate each hobby)</i></small></mat-label>
     <textarea matInput class="form-control" rows=6 placeholder="Reading, Travelling, Gaming" [(ngModel)]="user.hobbies"></textarea>
   </mat-form-field>
 

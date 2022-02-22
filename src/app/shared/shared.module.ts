@@ -26,6 +26,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { ClipboardModule } from '@angular/cdk/clipboard'
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 const components = [
@@ -56,6 +58,7 @@ const modules = [
   MatExpansionModule,
   MatButtonToggleModule,
   ClipboardModule,
+  MatChipsModule
 ];
 
 @NgModule({

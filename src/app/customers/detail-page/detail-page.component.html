@@ -6,6 +6,12 @@
     <!-- <div class="mat-h1">{{ cust.location }}</div> -->
     <div class="mat-h2">{{ cust.bio }}</div>
     <a class="mat-h2" href={{cust.link}} target="_blank">{{ cust.link }}</a>
+    
+    <p>
+      <mat-chip-list>
+        <mat-chip *ngFor="let hobby of cust.hobbies.split(',')"><p>{{ hobby }}</p></mat-chip>
+      </mat-chip-list>
+    </p>
   </div>
  
 </section>
