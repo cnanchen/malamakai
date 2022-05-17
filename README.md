@@ -68,3 +68,4 @@ export const environment = {
 ## Developing
 
 🟠 Blog
+🟠 Blog Table of Content [Source1](https://www.npmjs.com/package/generatoc), [source2](https://webdevtrick.com/dynamic-table-of-contents/)
