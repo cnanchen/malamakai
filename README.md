@@ -67,5 +67,6 @@ export const environment = {
 
 ## Developing
 
-🟠 Blog
+🟠 Blog detail page and back button.
 🟠 Blog Table of Content [Source1](https://www.npmjs.com/package/generatoc), [source2](https://webdevtrick.com/dynamic-table-of-contents/)
+🟠 Helpers page to one-time payments with some text.

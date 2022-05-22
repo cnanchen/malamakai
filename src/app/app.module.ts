@@ -20,6 +20,7 @@ import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 // Page components
 import { KnowPageComponent } from './know-page/know-page.component';
 import { BlogModule } from './blog/blog.module';
+import { HelpersModule } from './helpers/helpers.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { BlogModule } from './blog/blog.module';
     AngularFireFunctionsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BlogModule,
+    HelpersModule,
   ],
   providers: [
     { provide: REGION, useValue: 'us-central1' }, //TO-DO Change to your functions location
