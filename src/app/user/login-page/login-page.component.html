@@ -25,15 +25,15 @@
     </mat-form-field>
     <div>
       <button mat-stroked-button routerLink="/{{user.uid}}"><mat-icon>reply</mat-icon>View profile</button>
-      <button mat-stroked-button (click)="afAuth.auth.signOut()">Logout</button>
+      <button mat-stroked-button (click)="afAuth.signOut()">Logout</button>
     </div>
     
     <mat-tab-group mat-align-tabs="center" color="accent" [selectedIndex]="1">
       <mat-tab label="✨ Upgrade">
-        <app-upgrade></app-upgrade> 
+        <!-- <app-upgrade></app-upgrade>  -->
       </mat-tab>
       <mat-tab label="Profile">
-        <app-edit-profile></app-edit-profile>
+        <!-- <app-edit-profile></app-edit-profile> -->
       </mat-tab>
       <mat-tab label="Bio">
         <app-bio></app-bio>   

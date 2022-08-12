@@ -16,8 +16,11 @@ export class UpgradeComponent {
   invoices = [];
   functionLocation = 'us-central1';
 
-  public userId:any = this.afAuth.auth.currentUser.uid;
-  
+
+  public userId:any = this.afAuth.currentUser.then((user) => {user.uid});
+  public currentUser: any;
+
+
   constructor(
     private afStore: AngularFirestore,
     private afFunctions: AngularFireFunctions,
@@ -27,6 +30,7 @@ export class UpgradeComponent {
     this.displayInvoices();
     this.setCurrentUser();
     this.getCustomClaimRole();
+    console.log('🔢 USER UID:', this.userId);
   }
   
   // ✅ DISPLAY PRODUCTS
@@ -73,9 +77,10 @@ export class UpgradeComponent {
   
   // ✅ DISPLAY INVOICES
   displayInvoices() {
-    const userId = this.afAuth.auth.currentUser.uid;
+    // const userId = this.afAuth.currentUser.then((user) => {user.uid});
+
     const ref = this.afStore.collection('customers').ref;
-    ref.doc(userId)
+    ref.doc(this.userId)
       .collection('subscriptions')
       //.where('status', 'in', ['trialing', 'active'])
       .get()
@@ -112,7 +117,7 @@ export class UpgradeComponent {
   // ✅ SUBSCRIBE
   public async subscribe(price: string) {
     this.isloading = true // Spinner
-    const userId = this.afAuth.auth.currentUser.uid;
+    //const userId = this.afAuth.currentUser.then((user) => {user.uid});
     const selectedPrice = [{
       price,
       quantity: 1
@@ -140,7 +145,7 @@ export class UpgradeComponent {
 
     this.afStore
       .collection('customers')
-      .doc(userId)
+      .doc(this.userId)
       .collection('checkout_sessions')
       .add(checkoutSession).then(docRef => {
         // Wait for the CheckoutSession to get attached by the extension
@@ -182,9 +187,8 @@ export class UpgradeComponent {
   // ✅ GET USER SUBSCRIPTION
   // only first subscription is shown.
   private checkUserProduct() {
-    const userId = this.afAuth.auth.currentUser.uid;
     const ref = this.afStore.collection('customers').ref;
-    ref.doc(userId)
+    ref.doc(this.currentUser.userId)
       .collection('subscriptions')
       .where('status', 'in', ['trialing', 'active'])
       .onSnapshot(async (snapshot) => {
@@ -226,23 +230,15 @@ export class UpgradeComponent {
 
   // ✅ STRIPE ROLES
   // IMPORTANT: at Stripe dashboard/product add metadata field: 'firebaseRole' and example value: 'premium'
+  // SOURCE: https://github.dev/DJKullas/MacroRecipes/blob/81ad0ce92f12f6edbc2e2e49fda45318c1de14c6/src/app/profile/profile.component.ts
   async getCustomClaimRole() {
-    await this.afAuth.auth.currentUser.getIdToken(true); // await firebase.auth().currentUser.getIdToken(true);
-    const decodedToken = await this.afAuth.auth.currentUser.getIdTokenResult(); // const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
-    console.log('👤 USER ROLE:', decodedToken.claims.stripeRole);
-    this.stripeRole = decodedToken.claims.stripeRole;
-    return decodedToken.claims.stripeRole || 'free';
-  }
-/*
-  async getCustomClaimRole() {
-
-    this.auth.user.subscribe(async res => {
+    this.afAuth.user.subscribe(async res => {
       res.getIdToken(true);
       const decodedToken = await res.getIdTokenResult();
-      console.log(decodedToken.claims.stripeRole);
-      this.role = decodedToken.claims.stripeRole;
-      return decodedToken.claims.stripeRole;
+      console.log('👤 USER ROLE:', decodedToken.claims.stripeRole);
+      this.stripeRole = decodedToken.claims.stripeRole;
+      return decodedToken.claims.stripeRole || 'free';
     });
   }
-  */
+
 }

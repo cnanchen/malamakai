@@ -33,7 +33,8 @@ export class EditProfileComponent implements OnInit {
 
   public image: FileI;
   public currentImage = '/assets/defaultUser.jpg';
-  public userData$: Observable<firebase.User>;
+  public userData$: any;
+  // public userData$: Observable<firebase.User>;
   private filePath: string;
   message: string;
 
@@ -100,17 +101,42 @@ export class EditProfileComponent implements OnInit {
         })
       ).subscribe();
   }
-  
+
+  // OLD
+  /*
   private saveUserProfile(user: UserI) {
     this.message = "Updating...";
 
-    this.afAuth.auth.currentUser.updateProfile({
+    this.afAuth.currentUser.updateProfile({
       displayName: user.displayName,
       photoURL: user.photoURL
     })
     // Save copy on firestore
-    let userId = this.afAuth.auth.currentUser.uid
+    let userId = this.afAuth.currentUser.uid
     this.db.collection('customers').doc(userId).update({
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+    })
+    .then(() => this.message = "Bio updated successfully.")
+    .catch(err => console.log('Error', err));
+
+  }
+  */
+
+  public userId:any = this.afAuth.currentUser.then((user) => {user.uid});
+
+  private async saveUserProfile(user: UserI) {
+    this.message = "Updating...";
+    
+    this.afAuth.user.subscribe(async res => {
+      res.updateProfile({
+        displayName: user.displayName,
+        photoURL: user.photoURL
+      })
+    })
+    // Save copy on firestore
+    // let userId = this.afAuth.currentUser.uid
+    this.db.collection('customers').doc(this.userId).update({
       displayName: user.displayName,
       photoURL: user.photoURL,
     })

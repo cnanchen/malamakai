@@ -15,7 +15,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
-import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+// import { StorageBucket } from '@angular/fire/storage';
 
 // Page components
 import { KnowPageComponent } from './know-page/know-page.component';

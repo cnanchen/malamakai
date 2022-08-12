@@ -1,5 +1,7 @@
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
@@ -12,13 +14,19 @@ export class BioComponent implements OnInit {
 
   user: any = {};
   message: string;
+  userId:any = this.afAuth.currentUser.then((user) => {user.uid});
 
-  constructor() {
+  constructor(
+    private afStore: AngularFirestore,
+    private afAuth: AngularFireAuth
+  ) {
+    console.log('USER', firebase.auth().currentUser.uid)
     this.getProfile();
   }
 
   ngOnInit() {}
 
+  /*
   getProfile(){
 
     let userId = firebase.auth().currentUser.uid;
@@ -35,11 +43,27 @@ export class BioComponent implements OnInit {
     })
 
   }
+  */
+
+  getProfile(){
+
+    this.afStore.collection('customers').doc(this.userId).get().toPromise().then((documentSnapshot) => {
+
+      this.user = documentSnapshot.data();
+      // this.user.displayName = this.user.firstName + " " + this.user.lastName;
+      this.user.id = documentSnapshot.id;
+      console.log('🔢 USER UID:', this.user);
+
+    }).catch((error) => {
+      console.log(error);
+    })
+
+  }
 
   update(){
 
     this.message = "Updating...";
-
+    /*
     let userId = firebase.auth().currentUser.uid;
     firebase.firestore().collection('customers').doc(userId).update({
       // first_name: this.user.displayName.split(' ')[0],
@@ -54,6 +78,7 @@ export class BioComponent implements OnInit {
     }).catch((error) => {
       console.log(error)
     })
+    */
 
   }
 

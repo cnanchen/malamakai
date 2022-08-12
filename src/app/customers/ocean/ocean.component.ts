@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class OceanComponent implements OnInit {
 
   invoices = []
-  public customerId:any = this.route.snapshot.paramMap.get('id'); // public customerId:any = this.afAuth.auth.currentUser.uid;
+  public customerId:any = this.route.snapshot.paramMap.get('id'); // public customerId:any = this.afAuth.currentUser.uid;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class OceanComponent implements OnInit {
   // ✅ DISPLAY INVOICES
   // of active subscriptions combined
   getUserInvoices() {
-    const customerId = this.route.snapshot.paramMap.get('id'); // const customerId = this.afAuth.auth.currentUser.uid;
+    const customerId = this.route.snapshot.paramMap.get('id'); // const customerId = this.afAuth.currentUser.uid;
     const ref = this.afStore.collection('customers').ref;
     ref.doc(customerId)
       .collection('subscriptions')
