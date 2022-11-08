@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -12,14 +12,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./email-login.component.scss']
 })
 export class EmailLoginComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   type: 'login' | 'signup' | 'reset' = 'signup';
   loading = false;
 
   serverMessage: string;
 
-  constructor(private afAuth: AngularFireAuth, private fb: FormBuilder) {}
+  constructor(private afAuth: AngularFireAuth, private fb: UntypedFormBuilder) {}
 
   ngOnInit() {
     this.form = this.fb.group({

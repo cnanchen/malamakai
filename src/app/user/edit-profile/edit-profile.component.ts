@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -46,10 +46,10 @@ export class EditProfileComponent implements OnInit {
   }
 
 
-  public profileForm = new FormGroup({
-    displayName: new FormControl('', Validators.required),
-    email: new FormControl({ value: '', disabled: true }, Validators.required),
-    photoURL: new FormControl('', Validators.required),
+  public profileForm = new UntypedFormGroup({
+    displayName: new UntypedFormControl('', Validators.required),
+    email: new UntypedFormControl({ value: '', disabled: true }, Validators.required),
+    photoURL: new UntypedFormControl('', Validators.required),
   });
 
   ngOnInit() {
