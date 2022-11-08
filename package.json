@@ -35,7 +35,7 @@
     "@angular/platform-server": "~12.2.16",
     "@angular/router": "~12.2.16",
     "@angular/service-worker": "~12.2.16",
-    "@angular/youtube-player": "^14.2.6",
+    "@angular/youtube-player": "^12.2.13",
     "@nestjs/common": "^6.11.6",
     "@nestjs/core": "^6.11.6",
     "@nestjs/ng-universal": "^3.0.0",
