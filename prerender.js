@@ -1,4 +1,4 @@
-require('zone.js/dist/zone-node');
+require('zone.js/node');
 require('reflect-metadata');
 
 const { join } = require('path');
